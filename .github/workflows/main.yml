@@ -44,7 +44,7 @@ jobs:
         ECR_REPOSITORY: ass2_repository
        # IMAGE_TAG: v1.1
       run: |
-        cd clo835_fall2022_assignment1
+        cd clo835_fall2022_assignment2
         #ls -ltra
         # Docker build app
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:webapp -f Dockerfile .
