@@ -39,7 +39,7 @@ jobs:
         # Docker build image database
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:IMAGE_TAG_1 -f Dockerfile_mysql .
         # Docker push image
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:db
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:IMAGE_TAG_1
     - name: Build, test, tag, and push image for Amazon ECR app
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -51,4 +51,4 @@ jobs:
         # Docker build app
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:IMAGE_TAG_2 -f Dockerfile .
         # Docker push
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:webapp
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:IMAGE_TAG_2
