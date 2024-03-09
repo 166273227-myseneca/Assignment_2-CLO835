@@ -30,12 +30,14 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: ass2_repository
+        IMAGE_TAG_1: db-V2.0.0
+        IMAGE_TAG_2: webapp-V2.0.0
        # IMAGE_TAG: v1.1
       run: |
         cd Assignment_2-CLO835/
         #ls -ltra
         # Docker build image database
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:db -f Dockerfile_mysql .
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:IMAGE_TAG_1 -f Dockerfile_mysql .
         # Docker push image
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:db
     - name: Build, test, tag, and push image for Amazon ECR app
@@ -47,6 +49,6 @@ jobs:
         cd Assignment_2-CLO835/
         #ls -ltra
         # Docker build app
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:webapp -f Dockerfile .
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:IMAGE_TAG_2 -f Dockerfile .
         # Docker push
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:webapp
