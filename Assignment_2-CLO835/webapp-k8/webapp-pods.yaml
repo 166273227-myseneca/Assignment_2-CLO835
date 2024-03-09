@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-pod
+  namespace: webapp
+spec:
+  containers:
+  - name: webserver
+    image: 584918656742.dkr.ecr.us-east-1.amazonaws.com/ass2_repository:my_app_latest
+    env:
+    - name: DBPWD
+      value: "password"
+    - name: DBUSER
+      value: "root"
+    - name: DBHOST
+      value: "mysql-service.sqldb.svc.cluster.local"
+    - name: DBPORT
+      value: "3306"
+    ports:
+    - containerPort: 8080
+~                                                                                                                                 
+~                           
